@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `role` VARCHAR(100) NOT NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Producto` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -32,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `Producto` (
   `descripcion` VARCHAR(255) NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Carro` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -50,8 +52,9 @@ values
 INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName)
 values
 (1,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa');
+UNLOCK TABLES;
 
-
+LOCK TABLES `Producto` WRITE;
 INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (1,'cereales', 'zucaritas', 100, 'Cereales de tigre');
@@ -59,7 +62,9 @@ values
 INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (2,'lacteos', 'leche de almendras', 200, 'Sin azucar');
+UNLOCK TABLES;
 
+LOCK TABLES `Carro` WRITE;
 INSERT INTO `Carro` (id,userId,estado)
 values
 (1,1, 'activo');
