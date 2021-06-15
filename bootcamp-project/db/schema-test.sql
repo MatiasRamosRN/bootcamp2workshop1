@@ -23,17 +23,17 @@ CREATE TABLE IF NOT EXISTS `User` (
   `role` VARCHAR(100) NOT NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Producto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `categoria` VARCHAR(255) NOT NULL,
   `nombre` VARCHAR(255) NOT NULL,
-  `cantidad` INT,
+  `cantidad` INT NULL,
   `descripcion` VARCHAR(255) NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Carro` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `Carro` (
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
@@ -54,7 +55,13 @@ values
 (1,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa');
 UNLOCK TABLES;
 
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
 LOCK TABLES `Producto` WRITE;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
 INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (1,'cereales', 'zucaritas', 100, 'Cereales de tigre');
@@ -63,6 +70,11 @@ INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (2,'lacteos', 'leche de almendras', 200, 'Sin azucar');
 UNLOCK TABLES;
+
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 
 LOCK TABLES `Carro` WRITE;
 INSERT INTO `Carro` (id,userId,estado)
