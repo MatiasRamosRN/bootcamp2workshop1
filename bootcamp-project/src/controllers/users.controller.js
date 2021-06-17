@@ -4,7 +4,7 @@ class userController {
   static async create(req, res) {
     try {
       //Intenta crear usuario
-      const user = await userService.create;
+      const user = await userService.create(req.body);
       if (user) {
         res.sendStatus(200);
       } else {
@@ -18,9 +18,9 @@ class userController {
 
   static async get(req, res) {
     try {
-      const user = await userService.get;
-      if (user) {
-        res.status(200).send(user);
+      const user = await userService.get(req.params.id);
+      if (user.length) {
+        res.status(200).send(user[0]);
       } else {
         res.status(404).send("Usuario no encontrado");
       }
@@ -32,10 +32,11 @@ class userController {
   static async delete(req, res) {
     try {
       //Primero verifico que el user exista
-      const user = await userService.get;
-      if (user) {
+      const user = await userService.get(req.params.id);
+      //Poner aca abajo validacion con JWT
+      if (user.length) {
         //El user existe
-        const deleteUser = await userService.delete;
+        const deleteUser = await userService.delete(req.params.id);
         if (deleteUser) {
           res.sendStatus(204);
         } else {
@@ -52,20 +53,20 @@ class userController {
   static async update(req, res) {
     try {
       //Primero verifico que el user exista
-      const user = await userService.get;
+      const user = await userService.get(req.params.id);
       if (user) {
-        //El user existe
-        const updatedUser = await userService.update;
+        const updatedUser = await userService.update(req.body);
         if (updatedUser) {
-          res.status(200).send(updatedUser);
+          const user = await userService.get(req.params.id);
+          res.status(200).send(user[0]);
         } else {
           res.sendStatus(417);
         }
       } else {
-        res.status(404).send("Usuario no encontrado");
+        res.status(404).send();
       }
     } catch (e) {
-      res.sendStatus(500);
+      res.status(500).send(e);
     }
   }
 }

@@ -1,12 +1,8 @@
 const user = {
   bodyCheck(req, res, next) {
-    const { id, username, firstName, lastName, email, password, role } =
-      req.body;
+    const { userName, firstName, lastName, email, password, role } = req.body;
 
-    if (!id || typeof id != "number") {
-      res.status(400).send("ID not found or wrong type");
-    }
-    if (!username || typeof username != "string") {
+    if (!userName || typeof userName != "string") {
       res.status(400).send("Username not found or wrong type");
     }
     if (!firstName || typeof firstName != "string") {

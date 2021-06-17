@@ -2,9 +2,10 @@ const { query } = require("../repositories/main.repository");
 
 class userDao {
   static signUp(user) {
-    const insertUserQuery = `INSERT INTO User (id, userName,
+    console.log("USER", user);
+    const insertUserQuery = `INSERT INTO User (userName,
         firstName, lastName, email,password,role) 
-        values (?, ?, ?, ?, ?, ?, ?)`;
+        values ( ?, ?, ?, ?, ?, ?)`;
 
     return query(insertUserQuery, user);
   }
