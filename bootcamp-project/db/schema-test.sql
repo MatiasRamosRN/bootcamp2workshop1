@@ -57,6 +57,7 @@ values
 INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (2,'lacteos', 'leche de almendras', 200, 'Sin azucar');
+UNLOCK TABLES;
 
 /*!40000 ALTER TABLE `Producto` ENABLE KEYS */;
 UNLOCK TABLES;
