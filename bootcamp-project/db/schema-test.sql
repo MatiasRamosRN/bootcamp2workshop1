@@ -26,12 +26,13 @@ ENGINE = InnoDB;
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName, rol)
+INSERT INTO `User` (id,userName,email,password,firstName,lastName,role)
 values
-(1,'userName', 'user@mail.com', '$2a$10$y1YpEHpRV7FH9WE./JA5k.ZWNYiMmifrojBXuOtdNukcPxj2FRWYe', 'Juan', 'Sanchez', 'admin');
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName, rol)
+(1,'userName', 'prueba1@prueba.com', '123456', 'prueba1', 'prueba','admin');
+
+INSERT INTO `User` (id,userName,email,password,firstName,lastName,role)
 values
-(2,'userName2', 'user2@mail.com', '$2a$10$y1YpEHpRV7FH9WE./JA5k.ZWNYiMmifrojBXuOtdNukcPxj2FRWYe', 'Juan2', 'Sanchez2', 'user');
+(2,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa','user');
 
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
