@@ -40,7 +40,6 @@ class userService {
   }
 
   static async update(user) {
-    console.log("User", user);
     let userUpdate = false;
     try {
       userUpdate = await userDao.update(
