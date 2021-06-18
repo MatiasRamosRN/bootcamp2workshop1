@@ -38,9 +38,21 @@ CREATE TABLE IF NOT EXISTS `Producto` (
 CREATE TABLE IF NOT EXISTS `Carro` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `userId` INT NOT NULL,
-  `estado` VARCHAR(100) NOT NULL,
+  `estado` VARCHAR(100) NOT NULL DEFAULT 'abierto',
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table Products_cart
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Products_cart (
+  cartId INT NOT NULL,
+  productId INT NOT NULL,
+  qty INT NOT NULL,
+  FOREIGN KEY (cartId) REFERENCES Carts(id),
+  FOREIGN KEY (productId) REFERENCES Products(id),
+  PRIMARY KEY (cartId, productId))
 ENGINE = InnoDB;
 
 
