@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 x-common-variables: &common-variables
   NODE_ENV: local
   DB_MAIN_HOST: mysql
@@ -17,10 +17,10 @@ services:
     depends_on:
       - mysql
     ports:
-      - '3000:3000'
-      - '9229:9229'
+      - "3000:3000"
+      - "9229:9229"
     tty: true
-    entrypoint: ['npm', 'run', 'local']
+    entrypoint: ["npm", "run", "local"]
   test:
     build:
       context: .
@@ -31,7 +31,7 @@ services:
     container_name: plataforma5-backend_test
     environment: *common-variables
     tty: true
-    entrypoint: ['npm', 'test']
+    entrypoint: ["npm", "test"]
   integration-test:
     build:
       context: .
@@ -46,8 +46,9 @@ services:
     depends_on:
       - mysql
     tty: true
-    entrypoint: ['npm', 'run', 'integration']
+    entrypoint: ["npm", "run", "integration"]
   mysql:
+    platform: linux/x86_64
     image: mysql:5.7
     container_name: plataforma5-database_mysql
     ports:
