@@ -1,0 +1,42 @@
+[
+    {
+        "group": "admin",
+        "permissions": [
+            {
+                "resource": "productos/*",
+                "methods": [
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "GET"
+                ],
+                "action": "allow"
+            }
+        ]
+    },
+    {
+        "group": "comprador",
+        "permissions": [
+            {
+                "resource": "carro/*",
+                "methods": [
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "GET"
+                ],
+                "action": "allow"
+            },
+            {
+                "resource": "users/*",
+                "methods": [
+                    "POST",
+                    "PUT",
+                    "DELETE",
+                    "GET"
+                ],
+                "action": "allow"
+            }
+        ]
+    }
+]
