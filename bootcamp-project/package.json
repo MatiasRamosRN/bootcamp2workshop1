@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "local": "nodemon --inspect=0.0.0.0:9229 src/index.js",
-    "test": "jest --coverage",
+    "test": "jest",
     "integration": "jest -c jest.config.integration.js --runInBand --detectOpenHandles"
   },
   "author": "Juan Ignacio Paz",
