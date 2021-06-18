@@ -9,7 +9,6 @@ router.get("/:id", userMiddlewares.idCheck, userController.get);
 router.delete(
   "/:id",
   authMiddleware.validateAuth,
-  aclMiddleware.authorizeRole,
   userMiddlewares.idCheck,
   userController.delete
 );

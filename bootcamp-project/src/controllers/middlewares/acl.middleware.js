@@ -5,6 +5,6 @@ acl.config({
   path: "src",
 });
 exports.authorizeRole = function (req, res, next) {
-  acl.authorize();
+  acl.authorize(req, res, next);
   next();
 };
