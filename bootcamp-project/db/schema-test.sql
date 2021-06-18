@@ -46,13 +46,13 @@ ENGINE = InnoDB;
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName)
+INSERT INTO `User` (id,userName,email,password,firstName,lastName,role)
 values
-(1,'userName', 'prueba1@prueba.com', '123456', 'prueba1', 'prueba');
+(1,'userName', 'prueba1@prueba.com', '123456', 'prueba1', 'prueba','admin');
 
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName)
+INSERT INTO `User` (id,userName,email,password,firstName,lastName,role)
 values
-(1,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa');
+(2,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa','user');
 
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
