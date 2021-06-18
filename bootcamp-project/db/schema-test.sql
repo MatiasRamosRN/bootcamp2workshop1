@@ -1,4 +1,3 @@
--- MySQL Workbench Forward Engineering
 CREATE DATABASE main_db;
 USE main_db;
 
@@ -15,52 +14,42 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `User` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `userName` VARCHAR(255) NOT NULL,
-  `firstName` VARCHAR(255) NOT NULL,
-  `lastName` VARCHAR(255) NOT NULL,
+  `userName` VARCHAR(255) NULL,
   `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `role` VARCHAR(100) NOT NULL,
+  `passwordEncrypted` VARCHAR(255) NULL,
+  `firstName` VARCHAR(255) NULL,
+  `lastName` VARCHAR(255) NULL,
+  `rol`  VARCHAR(255) NOT NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
+ENGINE = InnoDB;
+
+LOCK TABLES `User` WRITE;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName, rol)
+values
+(1,'userName', 'user@mail.com', '$2a$10$y1YpEHpRV7FH9WE./JA5k.ZWNYiMmifrojBXuOtdNukcPxj2FRWYe', 'Juan', 'Sanchez', 'admin');
+INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName, rol)
+values
+(2,'userName2', 'user2@mail.com', '$2a$10$y1YpEHpRV7FH9WE./JA5k.ZWNYiMmifrojBXuOtdNukcPxj2FRWYe', 'Juan2', 'Sanchez2', 'user');
+
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 CREATE TABLE IF NOT EXISTS `Producto` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+ `id` INT NOT NULL AUTO_INCREMENT,
   `categoria` VARCHAR(255) NOT NULL,
   `nombre` VARCHAR(255) NOT NULL,
   `cantidad` INT NULL,
   `descripcion` VARCHAR(255) NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
-  ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `Carro` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `userId` INT NOT NULL,
-  `estado` VARCHAR(100) NOT NULL,
-  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-
-LOCK TABLES `User` WRITE;
-/*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName)
-values
-(1,'userName', 'prueba1@prueba.com', '123456', 'prueba1', 'prueba');
-
-INSERT INTO `User` (id,userName,email,passwordEncrypted,firstName,lastName)
-values
-(1,'user2', 'prueba2@prueba.com', '123456', 'joaco', 'programa');
-
-/*!40000 ALTER TABLE `User` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-
-LOCK TABLES `Producto` WRITE;
-/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+ LOCK TABLES `Producto` WRITE;
+/*!40000 ALTER TABLE `Producto` DISABLE KEYS */;
 INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (1,'cereales', 'zucaritas', 100, 'Cereales de tigre');
@@ -69,20 +58,30 @@ INSERT INTO `Producto` (id,categoria,nombre,cantidad,descripcion)
 values
 (2,'lacteos', 'leche de almendras', 200, 'Sin azucar');
 
-/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
+CREATE TABLE IF NOT EXISTS `Carro` (
+ `id` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT NOT NULL,
+  `estado` VARCHAR(100) NOT NULL,
+  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
-LOCK TABLES `Carro` WRITE;
+ LOCK TABLES `Carro` WRITE;
 INSERT INTO `Carro` (id,userId,estado)
 values
 (1,1, 'activo');
 
-/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Carro` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

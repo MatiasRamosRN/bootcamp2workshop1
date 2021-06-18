@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/repositories/main.repository.js</title>
+    <title>Code coverage report for src/dao/products.dao.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -18,13 +18,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/repositories</a> main.repository.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/dao</a> products.dao.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -38,14 +38,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.73% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/11</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,64 +83,61 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const MysqlRepository = require('./mysql.repository')
-const { mainDatabase } = require('../config')
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { query } = require('../repositories/main.repository');
 &nbsp;
-let base = null;
+class productoDao {
+<span class="fstat-no" title="function not covered" >    st</span>atic getAll() {
+        
+    }
+<span class="fstat-no" title="function not covered" >    st</span>atic get(id) {
+<span class="cstat-no" title="statement not covered" >        console.log('llegue al dao' , id)</span>
+        const sql = <span class="cstat-no" title="statement not covered" >`SELECT categoria, nombre, cantidad, descripcion FROM Producto WHERE id = ?`</span>
+<span class="cstat-no" title="statement not covered" >        return query(sql, id) ;</span>
+    }
 &nbsp;
-/**
- * Connect to database and set pool
- */
-const connect = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-    const { host, user, pass, name } = <span class="cstat-no" title="statement not covered" >mainDatabase;</span>
+<span class="fstat-no" title="function not covered" >    st</span>atic post(producto) {
+        const sql = <span class="cstat-no" title="statement not covered" >`INSERT INTO Producto (categoria, nombre, cantidad, descripcion) values (?, ?, ?, ?)`</span>
+<span class="cstat-no" title="statement not covered" >        return query(sql, producto);</span>
+    }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    base = new MysqlRepository(host, user, pass, name);</span>
-<span class="cstat-no" title="statement not covered" >    base.connect();</span>
+<span class="fstat-no" title="function not covered" >    st</span>atic put(id, categoria, nombre, cantidad, descripcion) {
+        const sql = <span class="cstat-no" title="statement not covered" >`UPDATE Producto SET categoria = ?, nombre = ?, cantidad = ?, descripcion = ? WHERE id = ?`</span>
+<span class="cstat-no" title="statement not covered" >        return query(sql, [categoria, nombre, cantidad, descripcion, id]);</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    st</span>atic delete(id) {
+        const sql = <span class="cstat-no" title="statement not covered" >`DELETE from Producto WHERE id = ?`</span>
+<span class="cstat-no" title="statement not covered" >        return  query(sql, id);</span>
+    }
 }
-&nbsp;
-/**
- * force destroy mysql connection
- */
-const disconnect = <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >base.disconnect();</span>
-&nbsp;
-/**
- * Handles querying alongside with logging
- * @param {string} query 
- * @param {Object} values
- */
-const query = <span class="fstat-no" title="function not covered" >(q</span>uery, values) =&gt; <span class="cstat-no" title="statement not covered" >base.query(query, values);</span>
-const escapeId = <span class="fstat-no" title="function not covered" >(i</span>dentifier) =&gt; <span class="cstat-no" title="statement not covered" >base.escapeId(identifier);</span>
-&nbsp;
-module.exports = { connect, disconnect, query, escapeId };</pre></td></tr></table></pre>
+module.exports = productoDao</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
