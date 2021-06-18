@@ -20,14 +20,14 @@ describe('ProductsService test', () => {
             }
         });
         it('Devuelve un Producto si existe', async () =>{
-            const mock = [{
+            const mock = {
                 id: '1',
                 categoria: 'Frutas',
                 nombre: 'Frutilla',
                 cantidad: '100',
                 descripcion: 'sin descripcion',
                 createdAt: '2021-06-03T16:27:20.000Z'
-            }];
+            };
             const mock2 = [{exists : 1}];
             productoDao.exists.mockImplementationOnce(() => mock2);
             productoDao.get.mockImplementationOnce(() => mock) 
