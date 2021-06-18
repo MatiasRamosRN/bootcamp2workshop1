@@ -5,8 +5,9 @@ const user = require("./user.route");
 const router = express.Router();
 const version = "v1";
 
-//router.use(`/${version}/carts`, cart);
-//router.use(`/${version}/products`, product);
-router.use(`/${version}/usuarios`, user);
+router.use(`/${version}/carts`, cart);
+router.use(`/${version}/products`, product);
+router.use(`/${version}/users`, user);
+router.use(`/${version}/login`, auth);
 
 module.exports = { router };
