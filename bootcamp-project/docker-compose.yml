@@ -98,3 +98,4 @@ services:
 networks:
   default:
     name: plataforma5-backend
+    
