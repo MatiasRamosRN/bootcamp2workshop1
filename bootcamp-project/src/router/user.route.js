@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userMiddlewares = require("../utils/bodyParser");
 const userController = require("../controllers/users.controller");
-const authMiddleware = require("../controllers/middlewares/auth.middleware");
-const aclMiddleware = require("../controllers/middlewares/acl.middleware");
+const authMiddleware = require("../middlewares/auth.middleware");
+const aclMiddleware = require("../middlewares/acl.middleware");
+
 router.post("/", userMiddlewares.bodyCheck, userController.create);
 router.get("/:id", userMiddlewares.idCheck, userController.get);
 router.delete(
