@@ -3,7 +3,6 @@ const cart = require("./cart.route");
 const product = require("./product.route");
 const auth = require("./auth.route");
 const user = require("./user.route");
-const auth = require("./auth.route");
 const router = express.Router();
 const version = "v1";
 
