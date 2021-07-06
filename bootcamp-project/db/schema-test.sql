@@ -115,6 +115,22 @@ UNLOCK TABLES;
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
+CREATE TABLE IF NOT EXISTS `Estadisticas` (
+ `id` INT NOT NULL AUTO_INCREMENT,
+  `cantidad` INT NOT NULL,
+  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+ LOCK TABLES `Estadisticas` WRITE;
+INSERT INTO `Estadisticas` (id,cantidad)
+values
+(1, 5);
+
+/*!40000 ALTER TABLE `Carro` ENABLE KEYS */;
+UNLOCK TABLES;
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

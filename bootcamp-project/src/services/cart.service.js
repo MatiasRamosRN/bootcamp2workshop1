@@ -1,4 +1,5 @@
 const cartDao = require("../dao/cart.dao");
+const { cartStatusChange } = require("../utils/sqs");
 
 class cartService {
     static async create(userId) {
@@ -19,6 +20,7 @@ class cartService {
     static async update(cartId, estado) {
         const result = await cartDao.exists(cartId, "id");
         const exists = result[0].exists;
+        cartStatusChange({ date: "hoy", id: "1", cantidad: "5" });
         if (exists == 0)
             throw { error: "cart_id_not_found", msg: "Cart does not exist" };
         return cartDao.update(cartId, estado);
