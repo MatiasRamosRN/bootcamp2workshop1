@@ -1,11 +1,10 @@
-
-const acl = require("express-acl")
-
+const acl = require("express-acl");
+const version = "v1";
 acl.config({
-    baseUrl: version,
-    path: '../../src'
-})
+  baseUrl: version,
+  path: "src",
+});
 exports.authorizeRole = function (req, res, next) {
-    acl.authorize()
-    next()
-}
+  acl.authorize(req, res, next);
+  next();
+};

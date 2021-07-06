@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS `User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `userName` VARCHAR(255) NULL,
   `email` VARCHAR(255) NOT NULL,
-  `passwordEncrypted` VARCHAR(255) NULL,
+  `password` VARCHAR(255) NULL,
   `firstName` VARCHAR(255) NULL,
   `lastName` VARCHAR(255) NULL,
-  `rol`  VARCHAR(255) NOT NULL,
+  `role`  VARCHAR(255) NOT NULL,
   `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -113,6 +113,22 @@ values
 UNLOCK TABLES;
 
 
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+CREATE TABLE IF NOT EXISTS `Estadisticas` (
+ `id` INT NOT NULL AUTO_INCREMENT,
+  `cantidad` INT NOT NULL,
+  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+ LOCK TABLES `Estadisticas` WRITE;
+INSERT INTO `Estadisticas` (id,cantidad)
+values
+(1, 5);
+
+/*!40000 ALTER TABLE `Carro` ENABLE KEYS */;
+UNLOCK TABLES;
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 
 SET SQL_MODE=@OLD_SQL_MODE;
